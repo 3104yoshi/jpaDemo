@@ -6,21 +6,21 @@ import org.springframework.stereotype.Component;
 @Component
 public class SampleApplicationRunner implements ApplicationRunner {
 
-    private final AnotherClass anotherClass;
+    private final SampleFunctionalIFExecutor sampleFunctionalIFExecutor;
 
-    public SampleApplicationRunner(AnotherClass anotherClass) {
-        this.anotherClass = anotherClass;
+    public SampleApplicationRunner(SampleFunctionalIFExecutor sampleFunctionalIFExecutor) {
+        this.sampleFunctionalIFExecutor = sampleFunctionalIFExecutor;
     }
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
         // コマンドライン引数から特定のキーの値を取得
-        test();
+        test("key");
     }
 
-    public void test() {
-        SampleFunctionalIF sampleFunctionalIF = () -> System.out.println("Hello World");
-        anotherClass.executeSampleFunction(sampleFunctionalIF);
+    public String test(String key) {
+        SampleFunctionalIF sampleFunctionalIF = () -> key;
+        return sampleFunctionalIFExecutor.executeSampleFunction(sampleFunctionalIF);
     }
 
 }

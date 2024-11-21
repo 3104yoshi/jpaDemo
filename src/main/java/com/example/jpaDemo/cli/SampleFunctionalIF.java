@@ -5,5 +5,5 @@ import org.springframework.stereotype.Component;
 @FunctionalInterface
 @Component
 public interface SampleFunctionalIF {
-    void execute();
+    String execute();
 }
